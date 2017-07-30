@@ -25,15 +25,7 @@ $('#bill-of-lading-pjax').on('click', '.btn-delete', function () {
     if (confirm('Вы точно уверены, что хотите удалить эту запись?')) {
         $('#modal-form').modal('hide');
         var id = $(this).data('id');
-        $.getJSON('/admin/bill-of-lading/delete', {
-            ids: [id]
-        }, function (data) {
-            if (data.result == "ok") {
-                updateGrid();
-            } else {
-                alert('Произошла ошибка');
-            }
-        });
+        deleteRows([id]);
     }
     return false;
 });
@@ -45,24 +37,16 @@ $('#btn-modal-delete').click(function () {
 
 
 $('#run-action').click(function () {
-    var keys = $('#bill-of-lading-grid').yiiGridView('getSelectedRows');
-    if (keys) {
+    var ids = $('#bill-of-lading-grid').yiiGridView('getSelectedRows');
+    var action = $('select[name=action] option:selected').attr('value');
+    if (ids && action) {
         if (confirm('Вы точно уверены, что хотите удалить эту записи?')) {
-            var action = $('select[name=action] option:selected').attr('value');
             if (action === "delete") {
-                $.getJSON('/admin/bill-of-lading/delete', {
-                    ids: keys
-                }, function (data) {
-                    if (data.result == "ok") {
-                        updateGrid();
-                    } else {
-                        alert('Произошла ошибка');
-                    }
-                });
+                deleteRows(ids);
             }
         }
     } else {
-        alert('Пожалуйста, выберите строки');
+        alert('Пожалуйста, выберите строки и дествие');
     }
     return false;
 });
@@ -95,6 +79,18 @@ $(document).on('beforeSubmit', '#modal-form form', function (e) {
     return false;
 });
 
+//Helper function
+function deleteRows(ids) {
+    $.getJSON('/admin/bill-of-lading/delete', {
+        ids: ids
+    }, function (data) {
+        if (data.result == "ok") {
+            updateGrid();
+        } else {
+            alert('Произошла ошибка');
+        }
+    });
+}
 function updateGrid() {
     $.pjax.reload({container: "#bill-of-lading-pjax"});
 }
