@@ -87,6 +87,12 @@ class BillOfLadingController extends Controller
         echo Json::encode($result);
     }
 
+    /**
+     * Find BillOfLading model.
+     * @param integer $id
+     * @return json
+     */
+
     public function actionFind($id)
     {
         $model = $this->findModel($id);
@@ -96,9 +102,7 @@ class BillOfLadingController extends Controller
 
     /**
      * Deletes an existing BillOfLading model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
+     * @return json
      */
     public function actionDelete()
     {
