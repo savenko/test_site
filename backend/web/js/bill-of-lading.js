@@ -1,4 +1,4 @@
-//Действия
+//Actions
 $('#add-btn').click(function () {
     $('#btn-modal-delete').hide();
     $('#modal-form').modal('show');
@@ -52,7 +52,7 @@ $('#run-action').click(function () {
 });
 
 
-//Прерываем отправку через POST и отправляем через AJAX
+//Break POST send and run AJAX request
 $(document).on('beforeSubmit', '#modal-form form', function (e) {
     var btn = $('#btn-modal-save'),
         id = $('#modal-form #billoflading-id').val(),
