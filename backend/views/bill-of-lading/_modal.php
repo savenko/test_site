@@ -17,7 +17,7 @@ use common\models\BillOfLading;
                 <h4 class="modal-title">Форма</h4>
             </div>
             <div class="modal-body">
-                <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'id')->hiddenInput()->label(false)->error(false) ?>
 
                 <?= $form->field($model, 'city_from')->textInput(['maxlength' => true]) ?>
 
@@ -28,8 +28,8 @@ use common\models\BillOfLading;
                 <?= $form->field($model, 'status_id')->dropDownList(BillOfLading::$statusArr, ['prompt' => '--Выберите--']) ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Закрыть</button>
-                <input type="submit" value="Сохранить" class="btn btn-primary" id="btn-modal-save"/>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-delete"><i class="fa fa-times" aria-hidden="true"></i> Удалить</button>
+                <input type="submit" value="Сохранить" class="btn btn-primary pull-left" id="btn-modal-save"/>
             </div>
             <?php ActiveForm::end(); ?>
         </div><!-- /.modal-content -->
