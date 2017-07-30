@@ -8,9 +8,9 @@ use yii\helpers\Url;
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">НАВИГАЦИЯ</li>
-            <li class="<?= Yii::$app->controller->id=="apple"?"active":"" ?>">
-                <a href="<?= Url::to(['apple/index']) ?>">
-                    <i class="fa fa-th"></i> <span>Яблоки</span>
+            <li class="<?= Yii::$app->controller->id=="bill-of-lading"?"active":"" ?>">
+                <a href="<?= Url::to(['bill-of-lading/index']) ?>">
+                    <i class="fa fa-th"></i> <span>Накладные</span>
                     <span class="pull-right-container">
             </span>
                 </a>

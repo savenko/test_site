@@ -6,7 +6,7 @@ Yii 2 Advanced Project Template (Тестовый проект)
 ## Установка
 
 ```bash
-git clone https://github.com/savenko/prhol.git .
+git clone git remote add origin https://github.com/savenko/test_site.git .
 php composer.phar self-update
 php composer.phar update
 php init
@@ -14,7 +14,7 @@ php init
 vagrant up
 vagrant ssh
 ```
-Создайте Базу Данных и выполните миграции
+Создайте Базу Данных, укажите настройки для нее в /common/config/main-local.php и выполните миграции
 
 ```bash
 cd /var/www/public
